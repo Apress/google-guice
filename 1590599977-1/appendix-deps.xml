@@ -1,0 +1,24 @@
+<ivy-module version="2.0">
+    <info organisation="org.garbagecollected" module="guice-book-appendix"/>
+    
+    <!-- Roughly describes the dependencies for the appendix -->
+    <dependencies>
+        <!-- Guice -->
+        <dependency org="aopalliance" name="aopalliance" rev="1.0" />
+        
+        <!-- Jetty -->
+        <dependency org="org.mortbay.jetty" name="jetty-util" rev="6.1.6"/>
+        <dependency org="org.mortbay.jetty" name="servlet-api-2.5" rev="6.1.6"/>
+        <dependency org="org.mortbay.jetty" name="jetty" rev="6.1.6"/>        
+        
+         <!-- Wicket -->
+        <dependency org="org.apache.wicket" name="wicket-guice" rev="1.3.0">
+            <exclude org="com.code.google.guice" name="guice" />
+            <exclude org="easymock" name="easymock" />
+            <exclude org="org.apache.portals.bridges" name="portals-bridges-common" />
+            <exclude org="javax.portlet" name="portlet-api" />
+        </dependency>
+        <dependency org="org.slf4j" name="slf4j-jdk14" rev="1.4.3" />
+        <dependency org="org.slf4j" name="slf4j-api" rev="1.4.3" />
+    </dependencies>
+</ivy-module>

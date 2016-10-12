@@ -1,0 +1,24 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+   <package name="shoppinglist.web.secured" extends="secured-default" namespace="/secured">
+        <action name="Index" class="shoppinglist.web.secured.ShoppingListsAction">
+            <result>/WEB-INF/secured/Index.jsp</result>
+            <result name="viewSL">/WEB-INF/secured/ViewShoppingList.jsp</result>
+            <result name="createSL">/WEB-INF/secured/CreateShoppingList.jsp</result>
+            <result name="editSL">/WEB-INF/secured/UpdateShoppingList.jsp</result>
+        </action>
+        
+        <action name="ShoppingList" class="shoppinglist.web.secured.ShoppingListAction">
+            <result type="redirect-action">
+                <param name="actionName">Index</param>
+            </result>
+            <result name="input">/WEB-INF/secured/UpdateShoppingList.jsp</result>
+        </action>
+        
+        <action name="ProductList" class="shoppinglist.web.secured.ProductListAction">
+            <result>/WEB-INF/secured/Index.jsp</result>
+        </action>
+    </package>
+</struts>

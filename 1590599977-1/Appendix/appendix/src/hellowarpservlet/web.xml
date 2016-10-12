@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+      PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+      "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+    <display-name>Hello Warp Servlet</display-name>
+    <filter>
+        <filter-name>WebFilter</filter-name>
+        <filter-class>com.wideplay.warp.servlet.WebFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>WebFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>
+        <listener-class>
+            hellowarpservlet.HelloGuiceServletContextListener
+        </listener-class>
+    </listener>
+</web-app>

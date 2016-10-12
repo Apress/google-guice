@@ -1,0 +1,83 @@
+<ivy-module version="2.0">
+    <info organisation="org.garbagecollected" module="guice-book"/>
+    
+    <!-- Roughly describes the dependencies for the book -->
+    <dependencies>
+        <!-- Guice -->
+        <dependency org="aopalliance" name="aopalliance" rev="1.0" />
+        
+        <!-- Jetty -->
+        <dependency org="org.mortbay.jetty" name="jetty-ant" rev="6.1.6">
+            <exclude org="geronimo-spec" name="geronimo-spec-jta" />
+        </dependency>
+        <dependency org="org.mortbay.jetty" name="jetty-util" rev="6.1.6"/>
+        <dependency org="org.mortbay.jetty" name="servlet-api-2.5" rev="6.1.6"/>
+        <dependency org="org.mortbay.jetty" name="jsp-api-2.0" rev="6.1.6"/>
+        <dependency org="org.mortbay.jetty" name="jetty" rev="6.1.6"/>        
+        <dependency org="tomcat" name="jasper-compiler" rev="5.5.15" />
+        <dependency org="tomcat" name="jasper-runtime" rev="5.5.15" />
+        <dependency org="tomcat" name="jasper-compiler-jdt" rev="5.5.15" />
+        <dependency org="xerces" name="xmlParserAPIs" rev="2.6.2" />
+        <dependency org="xerces" name="xercesImpl" rev="2.6.2" />  
+        <!-- Jetty slightly different versions -->
+        <dependency org="commons-collections" name="commons-collections" rev="3.2" />
+        <dependency org="commons-el" name="commons-el" rev="1.0" />
+        
+        <!-- Hibernate -->
+        <dependency org="org.hibernate" name="hibernate" rev="3.2.5.ga">
+            <exclude org="javax.transaction" name="jta" />
+            <exclude org="javax.security" name="jacc" />
+            <exclude org="proxool" name="proxool" />
+            <exclude org="opensymphony" name="oscache" />
+            <exclude org="jboss" name="jboss-cache" />
+            <exclude org="net.sf.ehcache" name="ehcache" />
+            <exclude org="swarmcache" name="swarmcache" />
+            <exclude org="c3p0" name="c3p0" />
+            <exclude org="org.apache.lucene" name="lucene-core" />
+        </dependency>
+        <dependency org="org.hibernate" name="hibernate-annotations" rev="3.3.0.ga">
+            <exclude org="javax.transaction" name="jta" />
+            <exclude org="javax.security" name="jacc" />
+            <exclude org="proxool" name="proxool" />
+            <exclude org="opensymphony" name="oscache" />
+            <exclude org="jboss" name="jboss-cache" />
+            <exclude org="net.sf.ehcache" name="ehcache" />
+            <exclude org="swarmcache" name="swarmcache" />
+            <exclude org="c3p0" name="c3p0" />
+            <exclude org="org.apache.lucene" name="lucene-core" />
+        </dependency>
+        <dependency org="org.hibernate" name="hibernate-entitymanager" rev="3.3.1.ga">
+            <exclude org="javax.transaction" name="jta" />
+            <exclude org="javax.security" name="jacc" />
+            <exclude org="proxool" name="proxool" />
+            <exclude org="opensymphony" name="oscache" />
+            <exclude org="jboss" name="jboss-cache" />
+            <exclude org="net.sf.ehcache" name="ehcache" />
+            <exclude org="swarmcache" name="swarmcache" />
+            <exclude org="c3p0" name="c3p0" />
+            <exclude org="org.apache.lucene" name="lucene-core" />
+        </dependency>
+        
+        <!-- Struts 2 -->
+        <dependency org="org.apache.struts" name="struts2-core" rev="2.0.11">
+            <exclude org="org.springframework" name="spring-mock" />
+            <exclude org="velocity" name="velocity" />
+            <exclude org="velocity" name="velocity-tools" />
+            <exclude org="org.apache.struts" name="struts-annotations" />
+            <exclude org="commons-lang" name="commons-lang" />
+            <exclude org="commons-io" name="commons-io" />
+            <exclude org="uk.ltd.getahead" name="dwr" />
+            <exclude org="org.testng" name="testng" />
+            <exclude org="commons-fileupload" name="commons-fileupload" />
+            <exclude org="org.apache.pluto" name="pluto" />
+            <exclude org="portlet-api" name="portlet-api" />
+            <exclude org="javax-servlet" name="servlet-api" />
+        </dependency>
+        
+        <!-- MySQL -->
+        <dependency org="mysql" name="mysql-connector-java" rev="5.0.8"/>
+        
+        <!-- Log4J -->
+        <dependency org="log4j" name="log4j" rev="1.2.11"/>
+    </dependencies>
+</ivy-module>

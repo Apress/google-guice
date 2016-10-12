@@ -1,0 +1,59 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.objectFactory" value="guice" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="guice.module" value="shoppinglist.ShoppingListModule" />
+    
+    <package name="shoppinglist-default" extends="struts-default" abstract="true">
+        <interceptors>
+            <interceptor name="sessionPerRequestInterceptor" 
+                class="com.wideplay.warp.jpa.SessionPerRequestInterceptor"/>
+            <!-- Stack with single interceptor because we only want one instance -->
+            <!-- Interceptors = one instance per interceptor-ref -->
+            <interceptor-stack name="spriStack">
+                <interceptor-ref name="sessionPerRequestInterceptor" />
+            </interceptor-stack>
+        </interceptors>
+        <global-results>
+            <result name="error">/WEB-INF/Error.jsp</result>
+            <result name="login" type="redirect-action">
+                <param name="namespace">/</param>
+                <param name="actionName">LoginInput</param>
+            </result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error" />
+        </global-exception-mappings>
+    </package>
+    
+    <!-- Configuration for the secured part of the application -->
+    <package name="secured-default" extends="shoppinglist-default" abstract="true">
+       <interceptors>
+            <interceptor name="authenticationInterceptor"
+                class="shoppinglist.web.util.AuthenticationInterceptor" />
+            <interceptor-stack name="securedStack">
+                <interceptor-ref name="spriStack" />
+                <interceptor-ref name="authenticationInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="securedStack" />
+    </package>
+    
+    <!-- Used for consistency, identifies globally accessible resources -->
+    <package name="unsecured-default" extends="shoppinglist-default" abstract="true">
+        <interceptors>
+            <interceptor-stack name="sessionPerRequestStack">
+                <interceptor-ref name="spriStack" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="sessionPerRequestStack" />
+    </package>
+
+    <include file="shoppinglist/web/secured/secured.xml"/>
+    <include file="shoppinglist/web/unsecured.xml"/>
+</struts>

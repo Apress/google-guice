@@ -1,0 +1,36 @@
+<!--h1, h2, h3, h4, p, br, pre, b-->
+<pre>
+- page 10: "advantaged" should be spelled "advantages".
+- page 120-121: The code in listing 6-18 does not work correctly
+                because of the inline Provider. It should be a separate type.
+    package shoppinglist.web;
+    ... // imports
+
+    public class WebModule extends AbstractModule {
+        @Override
+        protected void configure() {
+            bind(UserToken.class).toProvider(UserTokenProvider.class);// no scope!
+        }
+    
+        static class UserTokenProvider implements Provider<UserToken> {
+            @Inject private HttpSession session;
+            public UserToken get() {
+                // Struts 2 synchronizes on the same object
+                synchronized (session) {
+                    return (UserToken) session.getAttribute(UserToken.KEY);
+                }
+            }
+        }
+    }
+
+    package shoppinglist;
+    … // imports
+    public class ShoppingListModule implements Module {
+        public void configure(Binder binder) {
+            // Do not need ServletModule
+            // because the Struts plugin 1.0.1 installs it.
+            binder.install(new RepositoryModule());
+            binder.install(new WebModule());
+        }
+    }
+</pre>

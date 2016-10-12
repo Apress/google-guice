@@ -1,0 +1,24 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+   <package name="shoppinglist.web" extends="unsecured-default" namespace="/">
+        <action name="LoginInput">
+            <result>/WEB-INF/Login.jsp</result>
+        </action>
+        
+        <action name="Login" class="shoppinglist.web.LoginAction">
+            <result type="redirectAction">
+                <param name="actionName">Index</param>
+                <param name="namespace">/secured</param>
+            </result>
+            <result name="input">/WEB-INF/Login.jsp</result>
+        </action>
+        
+        <action name="Logout" class="shoppinglist.web.LogoutAction">
+            <result type="redirectAction">
+                <param name="actionName">LoginInput</param>
+            </result>
+        </action>
+    </package>
+</struts>
